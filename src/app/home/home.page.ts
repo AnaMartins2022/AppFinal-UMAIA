@@ -13,14 +13,15 @@ export class HomePage implements OnInit {
   mapa!: L.Map;
 
   ngOnInit() {
-    // Coordenadas exatas fornecidas por ti
+    // Coordenadas do Bloco A (Mantidas)
     const latA = 41.268376828456574;
     const lngA = -8.616794140859664;
     
-    const latD = 41.2706428003004;
-    const lngD = -8.616493733449369;
+    // NOVA Coordenada corrigida para o Bloco D
+    const latD = 41.270574257818744;
+    const lngD = -8.616579564216323;
 
-    // Centro do mapa
+    // Centro do mapa entre os dois pontos
     const centroLat = (latA + latD) / 2;
     const centroLng = (lngA + lngD) / 2;
 
@@ -30,12 +31,12 @@ export class HomePage implements OnInit {
       attribution: '© OpenStreetMap'
     }).addTo(this.mapa);
 
-    // Bloco A - Piso 3 (Configurado para não fechar quando o outro abre)
+    // Marcador Bloco A - Piso 3
     L.marker([latA, lngA]).addTo(this.mapa)
       .bindPopup('<b>Bloco A - Piso 3</b>', { autoClose: false, closeOnClick: false })
       .openPopup();
 
-    // Edifício Desportivo - Piso 0 (Configurado para aparecer logo também)
+    // Marcador Edifício Desportivo - Piso 0 (COM A NOVA COORDENADA)
     L.marker([latD, lngD]).addTo(this.mapa)
       .bindPopup('<b>Edifício Desportivo - Piso 0</b>', { autoClose: false, closeOnClick: false })
       .openPopup();
